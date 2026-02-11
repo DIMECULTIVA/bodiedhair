@@ -1,17 +1,167 @@
 ---
+import Layout from '../layouts/Layout.astro';
 
+const services = [
+  { category: "Installs & Styling", items: [
+    { name: "5x5 Wig Install", time: "1 h", price: "R 300" },
+    { name: "Basic Install", time: "1 h 30 min", price: "R 400" },
+    { name: "Install + Style", time: "1 h 30 min", price: "R 550" },
+    { name: "Styled Install with Curls", time: "1 h 30 min", price: "R 650" },
+    { name: "Bodied Curls Install", time: "1 h 30 min", price: "R 750" },
+    { name: "Curly Updo", time: "1 h 30 min", price: "R 650" },
+    { name: "Frontal Pony", time: "2 h", price: "R 650" },
+    { name: "Bridal Style", time: "2 h", price: "From R 700-850" },
+  ]},
+  { category: "Customisation & Combos", items: [
+    { name: "Customisation Only", time: "5 min", price: "R 300" },
+    { name: "Customisation + Basic Install", time: "1 h 30 min", price: "R 700" },
+    { name: "Customisation + Styled Install", time: "1 h 30 min", price: "R 850" },
+    { name: "Layers and Curling Only", time: "30 min", price: "R 400" },
+  ]},
+  { category: "Maintenance & Prep", items: [
+    { name: "Wig Wash", time: "5 min", price: "R 250" },
+    { name: "Wig Ironing", time: "5 min", price: "R 150" },
+    { name: "Wig Treatment", time: "5 min", price: "R 350" },
+    { name: "Plucking Only", time: "5 min", price: "R 150" },
+    { name: "Bleaching Knots", time: "5 min", price: "R 150" },
+  ]}
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="BODIEDHAIR | Durban Hairstylist & Makeup">
+	
+	<nav class="fixed w-full top-4 z-50 px-4">
+		<div class="max-w-5xl mx-auto bg-white/80 backdrop-blur-md rounded-full px-8 py-4 flex justify-between items-center shadow-sm">
+			<span class="serif text-2xl tracking-widest font-semibold uppercase">Bodied<span class="font-light">Hair</span></span>
+			<a href="#book" class="bg-[#1A1A1A] text-white px-6 py-2 rounded-full hover:bg-black transition-colors duration-300">Book Now</a>
+		</div>
+	</nav>
+
+	<header class="min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24" data-aos="fade-up">
+		<div class="w-40 h-40 bg-[#FBF9F6] shadow-xl rounded-full mb-8 flex items-center justify-center overflow-hidden">
+			<img src="/logo.jpeg" alt="Bodied Hair Logo" class="w-full h-full object-cover" />
+		</div>
+		<h1 class="text-5xl md:text-7xl mb-6">Flawless Installs.<br/>Ultimate Aesthetics.</h1>
+		<p class="text-lg md:text-xl text-gray-600 max-w-xl mx-auto mb-10">Premium wig customization, installs, and makeup styling based in Durban. Experience the BodiedHair standard.</p>
+		<a href="#services" class="bg-[#E5D3B3] text-[#1A1A1A] px-8 py-4 rounded-full text-lg font-medium hover:bg-[#D4C09E] transition-all transform hover:scale-105">View Services</a>
+	</header>
+
+	<section id="services" class="py-24 px-4 max-w-6xl mx-auto">
+		<div class="text-center mb-16" data-aos="fade-up">
+			<h2 class="text-4xl mb-4">Service Menu</h2>
+			<p class="text-gray-500">Expert care for a seamless look.</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+			{services.map((category, index) => (
+				<div class="bg-white rounded-[2rem] p-8 shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up" data-aos-delay={index * 100}>
+					<h3 class="text-2xl mb-6 text-center border-b border-gray-100 pb-4">{category.category}</h3>
+					<ul class="space-y-4">
+						{category.items.map(item => (
+							<li class="flex justify-between items-end group">
+								<div>
+									<h4 class="font-medium text-[15px]">{item.name}</h4>
+									<span class="text-xs text-gray-400">{item.time}</span>
+								</div>
+								<div class="border-b border-dotted border-gray-300 flex-grow mx-4 mb-1 group-hover:border-gray-500 transition-colors"></div>
+								<span class="font-medium">{item.price}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</div>
+        <div class="mt-8 bg-[#E5D3B3]/20 rounded-[2rem] p-8 shadow-sm text-center" data-aos="fade-up">
+            <h3 class="text-2xl mb-2">Makeup Services</h3>
+            <p class="text-gray-600">Professional makeup application services are also available. Contact us for custom quotes and availability.</p>
+        </div>
+	</section>
+
+	<section class="py-24 px-4 bg-white rounded-[3rem] mx-4 md:mx-10 my-10" data-aos="fade-up">
+		<div class="max-w-6xl mx-auto text-center">
+			<h2 class="text-4xl mb-12">The Bodied Portfolio</h2>
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="portfolio-grid">
+				<div class="aspect-[4/5] bg-gray-100 rounded-3xl animate-pulse"></div>
+				<div class="aspect-[4/5] bg-gray-100 rounded-3xl animate-pulse"></div>
+				<div class="aspect-[4/5] bg-gray-100 rounded-3xl animate-pulse"></div>
+				<div class="aspect-[4/5] bg-gray-100 rounded-3xl animate-pulse"></div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-24 px-4 max-w-4xl mx-auto" data-aos="fade-up">
+		<div class="bg-[#1A1A1A] text-white rounded-[2rem] p-8 md:p-12 shadow-xl">
+			<h2 class="text-3xl mb-8 text-center text-[#E5D3B3]">Policy & Terms</h2>
+			<ul class="space-y-4 font-light text-sm md:text-base opacity-90 list-disc pl-4">
+				<li>Please make a <strong>50% deposit</strong> of your total amount to secure your appointment (non-refundable) within 10 minutes of making your booking.</li>
+				<li>No payment, no appointment.</li>
+				<li>Please note that we do not install hair that is NOT customised.</li>
+				<li>Please bring your wig <strong>2 days before</strong> your appointment.</li>
+				<li>Please bring CLEAN hair to your hair appointment.</li>
+				<li>20 minutes late your appointment will be cancelled. 15 minutes late a fee of R100 will be charged.</li>
+				<li>Due to limited space, please come ALONE to your appointment.</li>
+				<li>Early and Late slots available at an additional fee of R200 (please send WhatsApp).</li>
+				<li>Clients can cancel or reschedule appointments up to 48 hours before start time.</li>
+			</ul>
+			
+			<div class="mt-8 p-6 bg-white/10 rounded-3xl">
+				<h3 class="font-medium text-[#E5D3B3] mb-2 uppercase tracking-wider text-sm">Banking Details</h3>
+				<p class="font-light">STANDARD BANK - Bodiedbylihle</p>
+				<p class="font-light">Acc no : 1014 51 23 527</p>
+				<p class="font-light">Branch code: 4126</p>
+				<p class="mt-4 text-sm italic text-red-300">*Immediate Payment Only. Please Send POP on WhatsApp.*</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-24 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center" data-aos="fade-up">
+		<div class="w-full h-[400px] rounded-[2rem] overflow-hidden shadow-lg">
+			<iframe 
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110595.77661271638!2d30.932062602760824!3d-29.861783008985552!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ef7aa0001bc61b7%3A0xcca75546c4aa62ce!2sDurban!5e0!3m2!1sen!2sza!4v1714150000000!5m2!1sen!2sza" 
+				width="100%" 
+				height="100%" 
+				style="border:0;" 
+				allowfullscreen="" 
+				loading="lazy" 
+				referrerpolicy="no-referrer-when-downgrade">
+			</iframe>
+		</div>
+
+		<div>
+			<h2 class="text-4xl mb-8">Get in Touch</h2>
+			
+			<div class="space-y-6">
+				<div class="flex flex-col">
+					<span class="text-sm text-gray-500 uppercase tracking-widest mb-1">Contact</span>
+					<a href="https://wa.me/27732929543" class="text-xl hover:text-[#D4C09E] transition-colors">073 292 9543</a>
+					<a href="mailto:thembelihlensimba@gmail.com" class="text-xl hover:text-[#D4C09E] transition-colors">thembelihlensimba@gmail.com</a>
+				</div>
+
+				<div class="flex flex-col">
+					<span class="text-sm text-gray-500 uppercase tracking-widest mb-1">Socials</span>
+					<div class="flex gap-4 mt-2">
+						<a href="https://www.instagram.com/bodiedhair.sa/?utm_source=ig_web_button_share_sheet" target="_blank" class="bg-gray-100 p-4 rounded-full hover:bg-[#E5D3B3] transition-colors">Instagram</a>
+						<a href="https://www.tiktok.com/@bodiedhair.sa?_t=ZM-8wvevQEhqyb&_r=1" target="_blank" class="bg-gray-100 p-4 rounded-full hover:bg-[#E5D3B3] transition-colors">TikTok</a>
+					</div>
+				</div>
+
+				<div class="bg-white p-6 rounded-[2rem] shadow-sm border border-gray-50 mt-8">
+					<span class="text-sm text-gray-500 uppercase tracking-widest mb-4 block">Trading Hours</span>
+					<ul class="space-y-2 text-sm">
+						<li class="flex justify-between"><span class="text-gray-400">Sunday</span> <span>Closed</span></li>
+						<li class="flex justify-between"><span>Monday</span> <span>9:00 - 16:00</span></li>
+						<li class="flex justify-between"><span>Tuesday</span> <span>8:00 - 17:00</span></li>
+						<li class="flex justify-between"><span>Wednesday</span> <span>8:00 - 17:00</span></li>
+						<li class="flex justify-between"><span>Thursday</span> <span>8:00 - 17:00</span></li>
+						<li class="flex justify-between"><span>Friday</span> <span>8:00 - 17:00</span></li>
+						<li class="flex justify-between"><span>Saturday</span> <span>8:00 - 17:00</span></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="bg-white py-8 text-center text-sm text-gray-400 rounded-t-[3rem] mx-4 mt-12 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)]">
+		<p>&copy; {new Date().getFullYear()} BodiedHair. All rights reserved.</p>
+	</footer>
+</Layout>
